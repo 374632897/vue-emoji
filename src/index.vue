@@ -53,6 +53,9 @@ export default {
     unicode: {
       default: false,
     },
+    autoInsert: {
+      default: false,
+    },
   },
   directives: {
     clickoutside
@@ -213,7 +216,9 @@ export default {
       const filePath = this.getPath(emojiName);
       const img = this.getEmoji(filePath, emojiName);
       this.$emit('select', img);
-      this.insertEmoji(img);
+      if (this.autoInsert) {
+        this.insertEmoji(img);
+      }
     },
     getEmoji (src, emojiName) {
       return this.useUnicode ?

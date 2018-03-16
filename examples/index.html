@@ -44,6 +44,7 @@
     <vue-emoji
       v-show = 'showEmoji'
       ref = 'emoji'
+      :autoInsert='false'
       @select = 'handleSelect'
       @hide = 'hide()'
     ></vue-emoji>
@@ -61,6 +62,7 @@
       v-show = 'showEmoji'
       ref = 'emoji'
       :unicode='true'
+      :auto-insert='true'
       @select = 'handleSelect'
       @hide = 'hide()'
     ></vue-emoji>
@@ -99,6 +101,7 @@ var getCommon = function (selector) {
         this.showEmoji = false;
       },
       handleSelect (img) {
+        console.log(img)
         if (img.nodeType === 3) {
           var $img = new Image();
           $img.src =  this.$refs.emoji.getImgPathByUnicode(img.textContent);
